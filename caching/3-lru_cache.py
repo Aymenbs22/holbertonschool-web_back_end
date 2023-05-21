@@ -26,7 +26,7 @@ BaseCaching and is a caching system"""
             self.cache_data[key] = item
             self.list.append(key)
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                lru = self.list.pop(-10)
+                lru = self.list.pop(-3)
                 del self.cache_data[lru]
                 print("DISCARD: " + lru)
 
