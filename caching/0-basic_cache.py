@@ -14,7 +14,6 @@ class BasicCache(BaseCaching):
         If key or item is None, this method should not do anything"""
         if (key or item is not None):
             self.cache_data[key] = item
-        return (None)
 
     def get(self, key):
         """Must return the value in self.cache_data
