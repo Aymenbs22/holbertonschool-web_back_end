@@ -38,9 +38,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Implement a get_hyper method that takes the same arguments
-(and defaults) as get_page and returns a dictionary
-containing the following key-value pairs"""
+        """Use index_range to find the correct indexes to paginate
+the dataset correctly and return the appropriate page of
+the dataset (i.e. the correct list of rows)"""
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
@@ -48,6 +48,9 @@ containing the following key-value pairs"""
         return(page)
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """Implement a get_hyper method that takes the same arguments
+(and defaults) as get_page and returns a dictionary
+containing the following key-value pairs"""
         dataset = self.get_page(page, page_size)
         next_page = page + 1 if page < len(dataset) else None
         prev_page = page - 1 if page > 1 else None
