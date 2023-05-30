@@ -7,6 +7,7 @@ toperform the substitution with a single regex"""
 
 from typing import List
 import re
+import logging
 
 
 def filter_datum(fields: List[str], redaction: str,
@@ -19,3 +20,24 @@ toperform the substitution with a single regex"""
         message = re.sub(f'{i}=.*?{separator}',
                          f'{i}={redaction}{separator}', message)
     return message
+
+
+class RedactingFormatter(logging.Formatter):
+    """ Redacting Formatter class
+        """
+
+    REDACTION = "***"
+    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
+    SEPARATOR = ";"
+
+    def __init__(self, fields: List[str]):
+        """init"""
+        super(RedactingFormatter, self).__init__(self.FORMAT)
+        self.fields = fields
+
+    def format(self, record: logging.LogRecord) -> str:
+        """Implement the format method to filter
+        values in incoming log records using
+        filter_datum. Values for fields in fields should be """
+        msg = super().format(record)
+        return filter_datum(self.fields, self.REDACTION, msg, self.SEPARATOR)
