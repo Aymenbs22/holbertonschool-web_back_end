@@ -16,6 +16,9 @@ def status() -> str:
 
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def unauthorized():
+    """
+    Add a new error handler for this status code
+    """
     return abort(401)
 
 
