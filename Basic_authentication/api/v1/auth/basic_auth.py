@@ -12,3 +12,5 @@ import os
 
 
 class BasicAuth(Auth):
+    """class BasicAuth that inherits from Auth.
+    For the moment this class will be empty"""
