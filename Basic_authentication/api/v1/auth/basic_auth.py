@@ -4,7 +4,7 @@ Route module for the API
 """
 
 from api.v1.auth.basic_auth import BasicAuth
-from api.v1.app import auth
+from api.v1.app import Auth
 
 
 class BasicAuth(Auth):
