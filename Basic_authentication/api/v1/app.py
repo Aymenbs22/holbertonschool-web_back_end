@@ -43,7 +43,10 @@ def not_found(error) -> str:
 
 @app.before_request
 def before_request():
-    """"""
+    """variable auth initialized to None after the CORS definition
+    import Auth from api.v1.auth.auth
+    create an instance of Auth and assign it to the variable auth
+    """
     if auth is None:
         return None
     pathlist = ['/api/v1/status/', '/api/v1/unauthorized/',
