@@ -5,6 +5,7 @@ Route module for the API
 
 from api.v1.auth.auth import Auth
 import uuid
+from models.user import User
 
 
 class SessionAuth(Auth):
@@ -30,3 +31,14 @@ class SessionAuth(Auth):
             return None
         userid = self.user_id_by_session_id.get(session_id)
         return userid
+
+    def current_user(self, request=None):
+        """instance method that returns a
+        User instance based on a cookie value"""
+        if request is None:
+            return None
+        session_cookie = self.session_cookie(request)
+        if session_cookie is None:
+            return None
+        userid = self.user_id_for_session_id(session_cookie)
+        return User.get(userid)
