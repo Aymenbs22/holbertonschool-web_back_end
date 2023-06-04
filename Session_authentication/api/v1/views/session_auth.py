@@ -40,5 +40,6 @@ def logout() -> str:
     destroy_session = auth.destroy_session(request)
     if not destroy_session:
         abort(404)
+        return False
     else:
         return jsonify({}), 200
