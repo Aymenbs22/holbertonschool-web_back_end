@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+SQLAlchemy model named User for a
+database table named users
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
