@@ -21,7 +21,8 @@ def _generate_uuid() -> str:
     """function should return a string representation
     of a new UUID. Use the uuid module"""
     id = uuid.uuid4()
-    return id
+    strid = str(id)
+    return strid
 
 
 class Auth:
