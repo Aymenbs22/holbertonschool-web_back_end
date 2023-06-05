@@ -48,8 +48,11 @@ class DB:
             raise InvalidRequestError
         try:
             users = self._session.query(User).filter_by(**user).first()
+        except NoResultFound:
+            raise NoResultFound
         except InvalidRequestError:
             raise InvalidRequestError
+        
         if not users:
             raise NoResultFound
         return users
