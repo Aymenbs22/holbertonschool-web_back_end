@@ -16,6 +16,7 @@ def _hash_password(password: str) -> str:
     bytePwd = bcrypt.hashpw(password.encode('utf-8'), mySalt)
     return bytePwd
 
+
 def _generate_uuid() -> str:
     """function should return a string representation
     of a new UUID. Use the uuid module"""
