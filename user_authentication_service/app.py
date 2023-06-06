@@ -69,7 +69,7 @@ def profile():
     if not findeduser:
         abort(403)
     else:
-        return jsonify({"email": email}), 200
+        return jsonify({"email": findeduser.email})
 
 
 if __name__ == "__main__":
