@@ -79,7 +79,10 @@ def get_reset_password_token():
     if not reset:
         abort(403)
     else:
-        return jsonify({"email": email, "reset_token": reset}), 200
+        try:
+            return jsonify({"email": email, "reset_token": reset}), 200
+        except Exception:
+            abort(403)
 
 
 if __name__ == "__main__":
