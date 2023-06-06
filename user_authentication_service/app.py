@@ -72,5 +72,15 @@ def profile():
         return jsonify({"email": findeduser.email})
 
 
+@app.route("/reset_password", methods=['POST'])
+def get_reset_password_token():
+    email = request.form.get('email')
+    reset = AUTH.get_reset_password_token(email)
+    if not reset:
+        abort(403)
+    else:
+        return jsonify({"email": email, "reset_token": reset}), 200
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
