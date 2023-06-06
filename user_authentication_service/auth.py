@@ -97,7 +97,7 @@ class Auth:
         exception. If it exists, generate a UUIDand update
         the user’s reset_token databasefield. Return the token"""
         if not email:
-            return None
+            raise ValueError
         try:
             user = self._db.find_user_by(email=email)
             uuid = _generate_uuid()
