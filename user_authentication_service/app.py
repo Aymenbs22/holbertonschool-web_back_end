@@ -84,12 +84,14 @@ def get_reset_password_token():
 
 @app.route("/reset_password", methods=['PUT'])
 def update_password():
+    """Update the password. If the token is invalid,
+    catch the exception and respond with a 403 HTTP code"""
     try:
         email = request.form.get('email')
         reset_token = request.form.get('reset_token')
         new_password = request.form.get('new_password')
-        reset = AUTH.update_password(reset_token, new_password)
-        return reset and jsonify({"email": email,
+        AUTH.update_password(reset_token, new_password)
+        return jsonify({"email": email,
                                   "message": "Password updated"}), 200
     except Exception:
         abort(403)
