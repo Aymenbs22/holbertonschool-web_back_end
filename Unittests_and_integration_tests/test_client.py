@@ -18,4 +18,4 @@ class TestGithubOrgClient(unittest.TestCase):
         """test_org method"""
         gitorg = GithubOrgClient(org)
         gitorg.org()
-        mock.assert_called_once_with("https://api.github.com/orgs/" + org)
+        mock.assert_called_once_with(f"https://api.github.com/orgs/{org}")
