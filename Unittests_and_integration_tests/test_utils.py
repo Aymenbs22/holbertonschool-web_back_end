@@ -4,7 +4,7 @@
 from parameterized import parameterized
 import unittest
 import utils
-from utils import get_json
+from utils import get_json, memoize
 from unittest.mock import Mock, patch
 
 
@@ -44,3 +44,25 @@ class TestGetJson(unittest.TestCase):
         with patch('requests.get', return_value=mockresponse):
             json_data = get_json(test_url)
             self.assertEqual(json_data, test_payload)
+
+
+class TestMemoize(unittest.TestCase):
+    """TestMemoize(unittest.TestCase) class
+    with a test_memoize method"""
+    def test_memoize(self):
+        """test_memoize module"""
+        class TestClass:
+            """TestClass class"""
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                """a_property method"""
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock_method:
+            testclass = TestClass()
+            testclass.a_property()
+            testclass.a_property()
+            mock_method.assert_called_once()
