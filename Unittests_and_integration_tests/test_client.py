@@ -24,3 +24,9 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch("client.GithubOrgClient.org") as mock:
             playload = {"repos_url": "a"}
             mock.return_value = playload
+
+    @patch('client.get_json')
+    def test_public_repos(self, mock):
+        with patch("client.GithubOrgClient._public_repos_url") as mock:
+            playload = {"repos_url": "a"}
+            mock.return_value = playload
