@@ -16,9 +16,8 @@ def Welcome():
 class Config(object):
     """Supported languages list"""
     LANGUAGES = ['en', 'fr']
-    app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-    app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
-    refresh()
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 app.config.from_object(Config)
