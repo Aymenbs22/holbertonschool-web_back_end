@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Basic Flask app"""
 from flask import Flask, render_template
-from flask_babel import Babel
+from flask_babel import Babel, refresh
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -21,3 +21,4 @@ class Config(object):
 app.config.from_object(Config)
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+refresh()
