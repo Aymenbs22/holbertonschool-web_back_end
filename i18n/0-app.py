@@ -8,4 +8,4 @@ app = Flask(__name__)
 @app.route('/')
 def Welcome():
     """basic Flask app"""
-    return render_template('/templates/0-index.html')
+    return render_template('0-index.html')
