@@ -59,6 +59,7 @@ class TestGithubOrgClient(unittest.TestCase):
             """should mock requests.get to return
             example payloads found in the fixtures"""
             cls.get_patcher = patch('requests.get')
+            cls.get_patcher.start()
 
         def tearDownClass(cls):
             """tearDownClass class method to stop the patcher"""
