@@ -8,6 +8,7 @@ from client import GithubOrgClient
 from parameterized import parameterized, parameterized_class
 import unittest
 from unittest.mock import Mock, patch
+import utils
 from fixtures import TEST_PAYLOAD
 
 
@@ -52,5 +53,13 @@ class TestGithubOrgClient(unittest.TestCase):
     @parameterized_class(("org_payload", "repos_payload",
                          "expected_repos", "apache2_repos"), TEST_PAYLOAD)
     class TestIntegrationGithubOrgClient(unittest.TestCase):
+        """class and implement the setUpClass and tearDownClass
+        which are part of the unittest.TestCase API"""
         def setUpClass(cls):
+            """should mock requests.get to return
+            example payloads found in the fixtures"""
             cls.get_patcher = patch('requests.get')
+
+        def tearDownClass(cls):
+            """tearDownClass class method to stop the patcher"""
+            cls.get_patcher.stop()
