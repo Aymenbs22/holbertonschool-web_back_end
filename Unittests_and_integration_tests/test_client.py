@@ -6,6 +6,7 @@ from parameterized import parameterized, parameterized_class
 import unittest
 from unittest.mock import Mock, patch
 import utils
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -46,8 +47,8 @@ class TestGithubOrgClient(unittest.TestCase):
         result = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(result, expected)
 
-    @parameterized_class("org_payload", "repos_payload",
-                         "expected_repos", "apache2_repos")
+    @parameterized_class(("org_payload", "repos_payload",
+                         "expected_repos", "apache2_repos"), TEST_PAYLOAD)
     class TestIntegrationGithubOrgClient(unittest.TestCase):
         def setUpClass(cls):
             cls.get_patcher = patch('requests.get')
