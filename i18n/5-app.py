@@ -57,5 +57,5 @@ def get_user() -> dict or None:
     if not login_as:
         return None
     else:
-        user = users.get(get_user)
+        user = users.get(login_as)
         return user
