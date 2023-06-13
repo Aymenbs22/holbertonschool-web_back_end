@@ -18,4 +18,9 @@ class TestGithubOrgClient(unittest.TestCase):
         """test_org method"""
         gitorg = GithubOrgClient(org)
         gitorg.org()
-        mock.assert_called_once_with(f"https://api.github.com/orgs/{org}")
+        mock.assert_called_once_with("https://api.github.com/orgs/" + org)
+
+    def test_public_repos_url(self):
+        with patch("client.GithubOrgClient.org") as mock:
+            playload = {"repos_url": "a"}
+            mock.return_value = playload
