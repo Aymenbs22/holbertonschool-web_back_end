@@ -8,7 +8,6 @@ from client import GithubOrgClient
 from parameterized import parameterized, parameterized_class
 import unittest
 from unittest.mock import Mock, patch
-import utils
 from fixtures import TEST_PAYLOAD
 
 
