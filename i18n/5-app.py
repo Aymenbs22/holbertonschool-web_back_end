@@ -23,6 +23,13 @@ class Config(object):
 app.config.from_object(Config)
 
 
+@app.before_request
+def before_request():
+    """function and use the app.before_request decorator
+    to make it be executed before all other functions"""
+    g.user = get_user()
+
+
 @babel.localeselector
 def get_locale():
     """function with the babel.localeselector decorator.
@@ -52,10 +59,3 @@ def get_user() -> dict or None:
     else:
         users = user.get(get_user)
         return users
-
-
-@app.before_request
-def before_request():
-    """function and use the app.before_request decorator
-    to make it be executed before all other functions"""
-    g.user = get_user()
