@@ -2,7 +2,7 @@
 """Parameterize and patch as decorators
 """
 from client import GithubOrgClient
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 import unittest
 from unittest.mock import Mock, patch
 import utils
@@ -45,3 +45,9 @@ class TestGithubOrgClient(unittest.TestCase):
         to unit-test GithubOrgClient.has_license"""
         result = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(result, expected)
+
+    @parameterized_class("org_payload", "repos_payload",
+                         "expected_repos", "apache2_repos")
+    class TestIntegrationGithubOrgClient(unittest.TestCase):
+        def setUpClass(cls):
+            cls.get_patcher = patch('requests.get')
