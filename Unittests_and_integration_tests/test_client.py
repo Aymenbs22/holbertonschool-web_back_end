@@ -35,3 +35,13 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch("client.GithubOrgClient._public_repos_url") as mock:
             playload = {"repos_url": "a"}
             mock.return_value = playload
+
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+    ])
+    def test_has_license(self, repo, license_key, expected):
+        """TestGithubOrgClient.test_has_license
+        to unit-test GithubOrgClient.has_license"""
+        result = GithubOrgClient.has_license(repo, license_key)
+        self.assertEqual(result, expected)
