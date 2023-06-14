@@ -60,5 +60,6 @@ def before_request():
     to make it be executed before all other functions"""
     g.user = get_user()
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
