@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Basic Flask app"""
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request
 from flask_babel import Babel, request
 
 app = Flask(__name__)
@@ -21,13 +21,6 @@ class Config(object):
 
 
 app.config.from_object(Config)
-
-
-@app.before_request
-def before_request():
-    """function and use the app.before_request decorator
-    to make it be executed before all other functions"""
-    g.user = get_user()
 
 
 @babel.localeselector
@@ -59,3 +52,10 @@ def get_user() -> dict or None:
     else:
         user = users.get(login_as)
         return user
+
+
+@app.before_request
+def before_request():
+    """function and use the app.before_request decorator
+    to make it be executed before all other functions"""
+    g.user = get_user()
