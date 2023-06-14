@@ -43,7 +43,7 @@ users = {
 }
 
 
-def get_user() -> dict or None:
+def get_user() -> dict:
     """function that returns a user dictionary or None
     if the ID cannot be found or if login_as was not passed"""
     login_as = request.args.get("login_as")
