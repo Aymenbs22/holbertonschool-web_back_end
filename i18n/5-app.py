@@ -10,7 +10,7 @@ babel = Babel(app)
 @app.route('/')
 def Welcome():
     """basic Flask app"""
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 class Config(object):
