@@ -50,7 +50,8 @@ def get_user() -> dict or None:
     if not login_as:
         return None
     else:
-        return users.get(login_as)
+        id = int(login_as)
+        return users.get(id)
 
 
 @app.before_request
