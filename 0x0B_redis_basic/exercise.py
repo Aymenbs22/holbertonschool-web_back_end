@@ -33,6 +33,10 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay():
+    return
+
+
 class Cache():
     """Cache class"""
     def __init__(self):
