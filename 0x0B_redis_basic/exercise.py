@@ -28,6 +28,7 @@ def call_history(method: Callable) -> Callable:
         """decorator it is useful to use functool.wraps
         to conserve the original function’s name, docstring"""
         self._redis.incr(meth)
+        self._redis.rpush(meth)
         return method(self, *args, **kwds)
     return wrapper
 
