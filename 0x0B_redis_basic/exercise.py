@@ -34,6 +34,8 @@ def call_history(method: Callable) -> Callable:
 
 
 def replay():
+    """implement a replay function to display
+    the history of calls of a particular function"""
     return
 
 
