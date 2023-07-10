@@ -2,7 +2,7 @@ function signUpUser(firstName, lastName) {
   const pro = Promise.resolve({
     firstName,
     lastName,
-  })
-  return pro
+  });
+  return pro;
 }
 export default signUpUser;
