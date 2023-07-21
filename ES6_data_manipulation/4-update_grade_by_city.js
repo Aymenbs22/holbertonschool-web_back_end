@@ -9,8 +9,8 @@ export default function updateStudentGradeByCity(getListStudents, city, newGrade
     return [];
   }
   const i = 0;
-  const sumWithInitial = getListStudents.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.id, i,
+  const sumWithInitial = getListStudents.filter(
+    (accumulator, currentValue) => accumulator.map((x) => x * 2) + currentValue.id, i,
   );
   return sumWithInitial;
 }
