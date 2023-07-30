@@ -10,6 +10,13 @@ const calculateNumber = require("./3-payment.js");
       });
   });
 
+  describe('test map', () => {
+    const operation = sinon.spy();
+
+    it('calls operation', () => {
+        expect(operation.called);
+    });
+});
 
   describe('SUBTRACT', () => {
       it(`...`, () => {
