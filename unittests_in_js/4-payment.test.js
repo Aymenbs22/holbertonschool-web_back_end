@@ -12,9 +12,14 @@ const calculateNumber = require("./3-payment.js");
 
   describe('test map', () => {
     const operation = sinon.spy();
+    const getStub;
+    getStub = sinon.stub();
 
     it('calls operation', () => {
         expect(operation.called);
+    });
+        it('calls operation', () => {
+        expect(getStub.called);
     });
 });
 
